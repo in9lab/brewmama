@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>酿造管理 - BrewMama</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brew-amber': '#F59E0B',
+            'brew-brown': '#92400E',
+            'brew-gold': '#EAB308',
+            'brew-cream': '#FEF3C7',
+            'brew-dark': '#292524',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: rgb(249 250 251);
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+    }
+    .btn:focus {
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+      --tw-ring-offset-width: 2px;
+    }
+    .btn-primary {
+      background-color: #F59E0B;
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: rgb(217 119 6);
+    }
+    .btn-primary:focus {
+      --tw-ring-color: #F59E0B;
+    }
+  </style>
+</head>
+<body>
+  <div class="flex h-screen bg-gray-100">
+    <!-- 桌面端侧边栏 -->
+    <div class="hidden md:flex md:flex-shrink-0">
+      <div class="flex flex-col w-64">
+        <div class="flex-1 flex flex-col min-h-0 bg-brew-dark">
+          <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+            <div class="flex items-center flex-shrink-0 px-4">
+              <span class="text-2xl font-bold text-brew-amber">BrewMama</span>
+            </div>
+            <nav class="mt-5 flex-1 px-2 space-y-1">
+              <a href="index.html" class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                仪表盘
+              </a>
+              <a href="recipes.html" class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                配方
+              </a>
+              <a href="brewing.html" class="group flex items-center px-2 py-2 text-sm font-medium rounded-md bg-brew-amber text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+                酿造
+              </a>
+              <a href="inventory.html" class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+                库存
+              </a>
+              <a href="settings.html" class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="mr-3 flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                设置
+              </a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 移动端菜单按钮 -->
+    <div class="md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3 bg-gray-100">
+      <button type="button" class="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" onclick="toggleMobileMenu()">
+        <span class="sr-only">打开菜单</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- 移动端侧边栏 -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 flex md:hidden transform -translate-x-full transition-transform duration-300 ease-in-out">
+      <!-- 移动侧边栏内容（简化版） -->
+      <div class="relative flex-1 flex flex-col max-w-xs w-full bg-brew-dark">
+        <div class="absolute top-0 right-0 -mr-12 pt-2">
+          <button type="button" class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" onclick="toggleMobileMenu()">
+            <span class="sr-only">关闭菜单</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex-shrink-0 flex items-center px-4 pt-5">
+          <span class="text-2xl font-bold text-brew-amber">BrewMama</span>
+        </div>
+        <nav class="mt-5 px-2 space-y-1">
+          <!-- 移动端导航项 -->
+        </nav>
+      </div>
+      <div class="flex-shrink-0 w-14"></div>
+    </div>
+
+    <!-- 主内容区 -->
+    <div class="flex flex-col w-0 flex-1 overflow-hidden">
+      <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none">
+        <div class="py-6">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <!-- 酿造管理内容 -->
+            <div>
+              <div class="sm:flex sm:items-center">
+                <div class="sm:flex-auto">
+                  <h1 class="text-2xl font-semibold text-gray-900">酿造管理</h1>
+                  <p class="mt-2 text-sm text-gray-700">管理您的所有酿造批次，包括当前的和已完成的。</p>
+                </div>
+                <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+                  <button type="button" onclick="toggleModal('batchModal')" class="inline-flex items-center justify-center rounded-md border border-transparent bg-brew-amber px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 sm:w-auto">
+                    新增批次
+                  </button>
+                </div>
+              </div>
+
+              <!-- 过滤和搜索栏 -->
+              <div class="mt-6 flex flex-col sm:flex-row justify-between space-y-3 sm:space-y-0 sm:space-x-4">
+                <div class="flex flex-1 max-w-md">
+                  <div class="relative flex-grow focus-within:z-10">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                    </div>
+                    <input
+                      type="text"
+                      class="block w-full rounded-md border-gray-300 pl-10 focus:border-amber-500 focus:ring-amber-500 sm:text-sm"
+                      placeholder="搜索批次..."
+                    />
+                  </div>
+                </div>
+                <div class="flex space-x-2">
+                  <select class="rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-amber-500 focus:outline-none focus:ring-amber-500 sm:text-sm">
+                    <option value="all">所有状态</option>
+                    <option value="active">酿造中</option>
+                    <option value="fermenting">发酵中</option>
+                    <option value="completed">已完成</option>
+                  </select>
+                  <select class="rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-amber-500 focus:outline-none focus:ring-amber-500 sm:text-sm">
+                    <option value="date">创建日期</option>
+                    <option value="name">名称</option>
+                    <option value="style">风格</option>
+                  </select>
+                </div>
+              </div>
+              
+              <!-- 批次列表 -->
+              <div class="mt-6 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-300">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">名称</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">风格</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">开始日期</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">状态</th>
+                      <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">进度</th>
+                      <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                        <span class="sr-only">操作</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-200 bg-white">
+                    <tr class="hover:bg-gray-50">
+                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Hoppy IPA</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">IPA</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">2023年10月1日</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm">
+                        <span class="inline-flex rounded-full px-2 text-xs font-semibold leading-5 bg-blue-100 text-blue-800">
+                          酿造中
+                        </span>
+                      </td>
+                      <td class="px-3 py-4 text-sm text-gray-500">
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                          <div class="bg-brew-amber h-2.5 rounded-full" style="width: 75%"></div>
+                        </div>
+                        <span class="text-xs">75%</span>
+                      </td>
+                      <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                        <a href="#" class="text-brew-amber hover:text-amber-900 mr-4">详情</a>
+                        <button class="text-brew-amber hover:text-amber-900">编辑</button>
+                      </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">比利时小麦啤酒</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Wheat</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">2023年9月15日</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm">
+                        <span class="inline-flex rounded-full px-2 text-xs font-semibold leading-5 bg-yellow-100 text-yellow-800">
+                          发酵中
+                        </span>
+                      </td>
+                      <td class="px-3 py-4 text-sm text-gray-500">
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                          <div class="bg-brew-amber h-2.5 rounded-full" style="width: 45%"></div>
+                        </div>
+                        <span class="text-xs">45%</span>
+                      </td>
+                      <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                        <a href="#" class="text-brew-amber hover:text-amber-900 mr-4">详情</a>
+                        <button class="text-brew-amber hover:text-amber-900">编辑</button>
+                      </td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                      <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">德式皮尔森</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">Pilsner</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">2023年8月20日</td>
+                      <td class="whitespace-nowrap px-3 py-4 text-sm">
+                        <span class="inline-flex rounded-full px-2 text-xs font-semibold leading-5 bg-green-100 text-green-800">
+                          已完成
+                        </span>
+                      </td>
+                      <td class="px-3 py-4 text-sm text-gray-500">
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                          <div class="bg-brew-amber h-2.5 rounded-full" style="width: 100%"></div>
+                        </div>
+                        <span class="text-xs">100%</span>
+                      </td>
+                      <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                        <a href="#" class="text-brew-amber hover:text-amber-900 mr-4">详情</a>
+                        <button class="text-brew-amber hover:text-amber-900">编辑</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- 简化版模态框结构 -->
+  <div id="batchModal" class="fixed inset-0 overflow-y-auto z-10 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onclick="toggleModal('batchModal')"></div>
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+      <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+        <div>
+          <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+            新增酿造批次
+          </h3>
+          <form class="mt-4">
+            <div class="space-y-4">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">名称</label>
+                <input type="text" id="name" class="mt-1 block w-full rounded-md border-gray-300 focus:border-amber-500 focus:ring-amber-500 sm:text-sm" />
+              </div>
+              <div>
+                <label for="style" class="block text-sm font-medium text-gray-700">风格</label>
+                <select id="style" class="mt-1 block w-full rounded-md border-gray-300 focus:border-amber-500 focus:ring-amber-500 sm:text-sm">
+                  <option value="IPA">IPA</option>
+                  <option value="Stout">司陶特</option>
+                  <option value="Wheat">小麦啤酒</option>
+                  <option value="Pilsner">皮尔森</option>
+                  <option value="Lager">拉格</option>
+                  <option value="Porter">波特</option>
+                </select>
+              </div>
+              <div>
+                <label for="description" class="block text-sm font-medium text-gray-700">描述</label>
+                <textarea id="description" rows="3" class="mt-1 block w-full rounded-md border-gray-300 focus:border-amber-500 focus:ring-amber-500 sm:text-sm"></textarea>
+              </div>
+              <div class="flex justify-between space-x-3">
+                <div class="w-1/2">
+                  <label for="quantity" class="block text-sm font-medium text-gray-700">数量 (L)</label>
+                  <input type="number" id="quantity" min="1" class="mt-1 block w-full rounded-md border-gray-300 focus:border-amber-500 focus:ring-amber-500 sm:text-sm" />
+                </div>
+                <div class="w-1/2">
+                  <label for="startDate" class="block text-sm font-medium text-gray-700">开始日期</label>
+                  <input type="date" id="startDate" class="mt-1 block w-full rounded-md border-gray-300 focus:border-amber-500 focus:ring-amber-500 sm:text-sm" />
+                </div>
+              </div>
+            </div>
+            <div class="mt-5 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:grid-flow-row-dense">
+              <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-brew-amber text-base font-medium text-white hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:col-start-2 sm:text-sm">
+                创建
+              </button>
+              <button type="button" onclick="toggleModal('batchModal')" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 sm:mt-0 sm:col-start-1 sm:text-sm">
+                取消
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleMobileMenu() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu.classList.contains('-translate-x-full')) {
+        mobileMenu.classList.remove('-translate-x-full');
+        mobileMenu.classList.add('translate-x-0');
+      } else {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('-translate-x-full');
+      }
+    }
+
+    function toggleModal(id) {
+      const modal = document.getElementById(id);
+      if (modal.classList.contains('hidden')) {
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+  </script>
+</body>
+</html> 
